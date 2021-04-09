@@ -4,22 +4,31 @@ $('#currentDay').text(currentHour);
 var time = moment().format('dddd MMMM YYYY');
 $("#currentDay").text(time);
 
-$("#9button").on("click", function(){
-    var nineAM = $("#9").val();
+// $("#9button").on("click", function(){
+//     var nineAM = $("#9").val();
+//    localStorage.setItem('nineAmToDos', nineAM);
+// });
 
-   //get the reference to the 9am text box here
-   localStorage.setItem('nineAmToDos', nineAM);
+for(var i = 9; i < 17; i++){
+    var currentButton = $('#' + i + 'button');
 
-});
+    var currentTextBox = $('#' + i);
 
+    var currentUserInputedText = 'userInputedText' + i;
+
+    currentButton.on('click', function(){
+        var userAgendaItem = currentTextBox.val();
+        localStorage.setItem(currentUserInputedText, userAgendaItem);
+    });
+};
 
 $(document).ready(function (){
     console.log("page loaded");
     var nineAmToDo = localStorage.getItem('nineAmToDos');
-    $("#9").val(nineAmToDo);
+
     $("#10").val("test");
 
-    for(var i=9; i<=19; i++){
+    for(var i=9; i<=17; i++){
 
         // create a variable that concatenates to get the html element
         var currentRef = $('#' + i);
