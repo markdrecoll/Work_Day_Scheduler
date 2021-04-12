@@ -3,25 +3,15 @@ var currentHour = moment().format('HH');
 var currentDateTime = moment().format('dddd MMMM YYYY');
 $("#currentDay").text(currentDateTime);
 
-// $("#9button").on("click", function(){
-//     var nineAM = $("#9").val();
-//    localStorage.setItem('nineAmToDos', nineAM);
-// });
-
+// start the for loop at 9 and cycle through the morning hours
 for(var i = 9; i < 17; i++){
+
+    // create a variable for getting the id of the textbox and button
     var currentButton = $('#' + i + 'button');
-
     var currentTextBox = $('#' + i);
-
-    // var currentUserInputedText = 'userInputedText' + i;
-
-    // currentButton.on('click', function(){
-    //     var userAgendaItem = currentTextBox.val();
-    //     localStorage.setItem(currentUserInputedText, userAgendaItem);
-    // });
 };
 
-
+// get user text then save it to local storage
 $('#timeBlockContainer').on('click', '.buttonToBeSaved', function(e){
     var currentID = ($(e.target).siblings().next().attr('id'));
     localStorage.setItem(currentID, $(`#${currentID}`).val());
@@ -29,11 +19,11 @@ $('#timeBlockContainer').on('click', '.buttonToBeSaved', function(e){
 
 // on page load: color the text boxes
 $(document).ready(function (){
-
+    
+    // start the for loop at 9 and cycle through the morning hours
     for(var i=9; i<=17; i++){
 
         // create a variable that concatenates to get the html element
-        // var currentRef = $('#' + i);
         var currentRef = $(`#${i}`);
 
         console.log(currentRef);
